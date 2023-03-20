@@ -1,0 +1,17 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+<header>
+    <div id="header">
+        <title>Eco Hotel Pomelia</title>
+        <h1 class="title">Eco Hotel Pomelia</h1>
+    </div>
+</header>
+<form method="POST" novalidate>
+	{% csrf_token %}
+	<h2>Sign Up</h2>
+	{{ form.as_p }}		
+	<input type="submit" value="Register" />
+</form>
+
+{% endblock content %}

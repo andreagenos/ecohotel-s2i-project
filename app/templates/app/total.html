@@ -1,0 +1,41 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+    <header>
+        <div id="header">
+            <title>Eco Hotel Pomelia</title>
+            <h1 class="title">Eco Hotel Pomelia</h1>
+            <h2 class="subtitle">Table showing the TOTAL energy consumed and produced by photovoltaic panels</h2>
+            <h3 class="staff">Staff only</h3>
+        </div>
+    </header>
+    {% if user.is_staff %}
+    <table class="table">
+        <thead> 
+            <tr>
+                <th>Produced energy</th>
+                <th>Consumed energy</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ total_produced }}</td>
+                <td>{{ total_consumed }}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="login_info">
+        {% if user.is_authenticated %}
+            <p class="menu">Welcome {{ user.username }} - <a href="{% url 'show_data' %}">Home</a> - <a href="{% url 'staff' %}">Total Energy</a> - <a href="{% url 'logout' %}">Log Out</a></p>
+        {% endif %}
+    </div>
+    {% else %}
+
+    <div id="login_info">
+        <p>You are not an Admin User. Please go to <a href="{% url 'show_data' %}">Home</a></p>
+        <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    </div>
+    {% endif %}
+    {% endblock %}
+</html>
