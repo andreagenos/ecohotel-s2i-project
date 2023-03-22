@@ -30,16 +30,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-RQ_QUEUES = {
-    'default': {
-         'HOST': 'localhost',
-         'PORT': '6379',
-         'URL': os.getenv('REDISTOGO_URL', 'redis://localhost:6379'),  # If you're
-         'DB': 0,
-         'DEFAULT_TIMEOUT': 480,
-     }
-}
-
 # Application definition
 
 INSTALLED_APPS = [

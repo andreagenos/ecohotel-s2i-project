@@ -42,19 +42,19 @@ def record_data(request):
         return StreamingHttpResponse('Endpoint Page')
 
 
-client = redis.StrictRedis(host='127.0.0.1', port=6379, password='',db=0, decode_responses=True)
+#client = redis.StrictRedis(host='127.0.0.1', port=6379, password='',db=0, decode_responses=True)
 
-@receiver(user_logged_in)
-def ip_check(sender, user, request, **kwargs):
-    diff_ip = False
-    username = request.user.username
-    last_ip = client.get(username)
-    current_ip = request.META['REMOTE_ADDR']
-    if last_ip is None:
-        client.set(username, current_ip)
-    elif current_ip != last_ip:
-        client.set(username, current_ip)
-        diff_ip = True
-    print(f'ip_check: is different?: {diff_ip}')
-    print(f"current: {current_ip}, last: {last_ip}")
-    return diff_ip
+#@receiver(user_logged_in)
+#def ip_check(sender, user, request, **kwargs):
+    #diff_ip = False
+    #username = request.user.username
+    #last_ip = client.get(username)
+    #current_ip = request.META['REMOTE_ADDR']
+    #if last_ip is None:
+        #client.set(username, current_ip)
+    #elif current_ip != last_ip:
+        #client.set(username, current_ip)
+        #diff_ip = True
+    #print(f'ip_check: is different?: {diff_ip}')
+    #print(f"current: {current_ip}, last: {last_ip}")
+    #return diff_ip
