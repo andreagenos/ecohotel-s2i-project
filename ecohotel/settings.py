@@ -30,16 +30,14 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
-# caches
-CACHES = {
+CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://redis:6379",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDISCLOUD_URL', 'redis://localhost:6379')],
         },
-        "KEY_PREFIX": "example"
-    }
+        "ROUTING": "chat.routing.channel_routing",
+    },
 }
 
 # Application definition
