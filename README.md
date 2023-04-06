@@ -5,6 +5,7 @@ ECOHOTEL WEBAPP (USING DJANGO AND BLOCKCHAIN)
 The goal of the project is to implement a system to track the energy produced and consumed by the Eco Hotel Pomelia's photovoltaic panels, using Django, Redis (a NoSQL database) and the Ethereum Blockchain Testnet Goerli.
 
 REQUESTS:
+
 •	Data entry of produced and consumed energy in JSON format with POST method
 
 •	Record Data on the Blockchain
